@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test test/review.test.mjs test/authoring.test.mjs test/word-reading.test.mjs test/runtime.test.mjs test/api.test.mjs",
-    "check": "node --check server.mjs && node --check public/app.js",
-    "test:word": "node --test test/word.test.mjs"
+    "test": "node --test test/review.test.mjs test/authoring.test.mjs test/word-reading.test.mjs test/runtime.test.mjs test/api.test.mjs test/word-handoff.test.mjs test/word-host.test.mjs test/review-record.test.mjs test/word-setup.test.mjs test/review-storage.test.mjs",
+    "check": "node --check server.mjs && node --check public/app.js && node --check public/word-host.js && node --check public/word.js && node --check public/review-record.js && node --check scripts/word-setup.mjs && node --check public/review-storage.js",
+    "test:word": "node --test test/word.test.mjs",
+    "word:setup": "node scripts/word-setup.mjs",
+    "word:start": "node scripts/word-setup.mjs start",
+    "word:validate": "office-addin-manifest validate office/manifest.xml"
   },
   "dependencies": {
     "diff": "8.0.4"
@@ -16,5 +19,9 @@
   "license": "MIT",
   "engines": {
     "node": ">=22"
+  },
+  "devDependencies": {
+    "fs-extra": "11.4.1",
+    "office-addin-manifest": "3.0.1"
   }
 }

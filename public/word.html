@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Careful legal revision, inside Microsoft Word. Review native tracked changes and continue in your local Margin workspace.">
+  <title>Margin · Word</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/word.css">
+  <script id="office-runtime" async src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script type="module" src="/word.js"></script>
+</head>
+<body>
+  <div class="pane" id="pane">
+    <header class="masthead">
+      <a class="wordmark" data-web-app aria-disabled="true" target="_blank" rel="noopener" aria-label="Open Margin web app">Margin</a>
+      <span class="host-label" id="host-label">FOR WORD</span>
+    </header>
+
+    <main id="main-content">
+      <section class="connection-state" id="connection-state" aria-labelledby="connection-heading">
+        <span class="section-label" id="connection-label">WORD ADD-IN</span>
+        <h1 id="connection-heading">A little more<br>room to review.</h1>
+        <p id="connection-description">Connecting to the document open in Word…</p>
+        <div id="connection-links" class="connection-links" hidden>
+          <a class="button primary" href="/word/setup" target="_blank" rel="noopener">Set up in Word <span aria-hidden="true">↗</span></a>
+          <a class="text-link" data-web-app aria-disabled="true" target="_blank" rel="noopener">Open the local web app</a>
+        </div>
+        <button class="text-button" id="connect-again" type="button" hidden>Try connecting again</button>
+      </section>
+
+      <div id="word-workspace" hidden>
+        <section class="tracking-section" aria-labelledby="tracking-heading">
+          <div class="tracking-row">
+            <div>
+              <h2 id="tracking-heading">Track changes</h2>
+              <p id="tracking-description">Reading Word’s settings…</p>
+            </div>
+            <button id="tracking-toggle" class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="tracking-heading" aria-describedby="tracking-description" disabled><span aria-hidden="true"></span></button>
+          </div>
+          <div class="tracking-scope" id="tracking-scope" hidden>
+            <label for="tracking-who">Record changes by</label>
+            <select id="tracking-who"><option value="TrackAll">Everyone</option><option value="TrackMineOnly">Just me</option></select>
+          </div>
+        </section>
+
+        <section class="review-section" aria-labelledby="review-heading">
+          <div class="review-heading-row">
+            <div><span class="section-label">MAIN TEXT</span><h1 id="review-heading">Changes <span id="change-count"></span></h1></div>
+            <button class="refresh-button" id="refresh" type="button" aria-label="Refresh tracked changes" title="Refresh tracked changes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M19.5 8A8 8 0 1 0 20 14M19.5 3v5h-5"/></svg><span>Refresh</span></button>
+          </div>
+          <p class="refresh-note" id="refresh-note">Refresh after editing in Word.</p>
+          <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+          <div class="error" id="error" role="alert" hidden></div>
+          <div class="review-list" id="review-list" aria-busy="true"></div>
+          <p class="scope-note" id="scope-note" hidden>Decisions update this Word document. Use Word’s Undo to reverse them. Review headers, footnotes and text boxes in Word.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="handoff-section" id="handoff-section" hidden>
+      <div class="handoff-heading"><h2>The wider view.</h2><span class="local-label"><span aria-hidden="true" class="local-mark"></span>LOCAL</span></div>
+      <p>Compare versions, work in LaTeX, and export.</p>
+      <button class="button primary handoff-button" id="handoff" type="button">Open in Margin <span aria-hidden="true">↗</span></button>
+      <div class="handoff-result" id="handoff-result" hidden>
+        <a class="button primary" id="handoff-link" target="_blank" rel="noopener">Continue in browser <span aria-hidden="true">↗</span></a>
+        <p id="handoff-expiry"></p>
+        <button class="text-button" id="handoff-again" type="button">Prepare a fresh copy</button>
+      </div>
+      <p class="handoff-note" id="handoff-note">Sends a copy to Margin on this computer. Changes made there stay in that copy.</p>
+      <p class="error" id="handoff-error" role="alert" hidden></p>
+    </footer>
+    <p class="colophon">built with heart by <a href="https://jonashertner.com" target="_blank" rel="noopener noreferrer">jonashertner.com</a></p>
+  </div>
+  <div class="sr-only" id="announcement" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

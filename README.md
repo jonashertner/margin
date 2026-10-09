@@ -50,6 +50,20 @@ Margin discovers the project `.venv`, tools on `PATH`, standard Homebrew locatio
 
 The earlier `FOLIO_*` environment variable names remain accepted. Explicit paths take precedence over discovery. Python virtual-environment and XeLaTeX invocation paths are preserved rather than replaced with their symlink targets. The sandbox grants read access to the selected toolchain's dependency directories; unusual installations may require additional, narrowly scoped configuration.
 
+## Use Margin inside Word
+
+Margin can also run as a Word task pane. Native review uses Word’s own tracked changes: show a revision in the document, accept or reject it, and reverse a decision with Word’s Undo. The pane covers the main text; Word remains the editor and the place to inspect other document areas.
+
+```sh
+npm run word:setup
+npm run word:setup -- sideload
+npm run word:start
+```
+
+A trusted localhost certificate is required. The status command reports whether one exists; certificate installation is an explicit separate step. Follow the [Word add-in setup guide](docs/word-add-in.md). This is a development installation, not yet a one-click consumer installer or Marketplace listing.
+
+**Open in Margin** prepares a separate local snapshot of the open Word document and links to the browser workspace. It includes unsaved wording as exposed by Word, expires after five minutes if unopened, and does not live-sync the two documents. Existing browser reviews remain in the HTTP workspace. Native macOS Word checks have verified selection, acceptance, rejection, Undo and refusal of a stale decision against a fictional agreement; the snapshot handoff retained its two comments, revisions and footnote. This is bounded host verification, not general compatibility certification.
+
 ## Working with a document
 
 - **Open document** accepts one `.docx` up to 4 MB, a standalone UTF-8 `.tex` file up to 300 KB, or plain text up to 150 KB. Plain text is escaped into LaTeX. LaTeX imports retain their original source text, including BOM and line endings.
@@ -60,7 +74,13 @@ The earlier `FOLIO_*` environment variable names remain accepted. Explicit paths
 - Comments on changed and unchanged passages stay visible. Imported comments retain supplied authors and dates. Add a response without replacing the received comment.
 - Use **J/K** to navigate, **A/R** to accept or keep original, **N** to comment, and **⌘Z / Ctrl+Z** to undo a local decision, comment or wording edit.
 
-The active review is saved in the browser. Opening another document keeps the previous one under **Recent reviews**. **Save review** creates a portable `.margin.json` file with sources, decisions, comments, conversion information and preserved original Word bytes. Earlier `.folio.json` review files remain readable. Browser storage is not a backup.
+The active review is saved in the browser. Opening another document keeps the previous one under **Recent reviews**. **Save review** creates a portable `.margin.json` file with sources, decisions, comments, conversion information and preserved original Word bytes. Earlier `.folio.json` review files remain readable. Browser storage is not a backup. If another tab changes the saved review, Margin pauses saving in the older tab so it cannot overwrite the newer work. Its in-memory review remains readable and can be saved as a portable file before reloading.
+
+### Context for people and other tools
+
+**For the next reader**, available in Document details, holds an optional purpose, unresolved questions and next step. Comments keep clause-specific discussion beside the wording. The note travels with the saved review. Accepting wording is not a legal approval or authority to sign, send or act.
+
+The export dialog also offers a versioned **structured review record** (`.margin-record.json`). It includes exact original/proposed LaTeX, source hashes, stable passage IDs, UTF-16 source offsets, wording decisions, comments, context, conversion limits and unauthenticated event history. Reading text is labelled as a simplified representation; exact source remains available. The read-only `read_margin_review` WebMCP tool exposes the same record in supporting browsers. There is no agent-facing decision or approval tool. This JSON is an inspection/interchange record; use `.margin.json` to resume a review, including its original Word binaries.
 
 ### Export
 
@@ -79,6 +99,20 @@ Known unsupported content receives specific notices, including text boxes, image
 The reading view simplifies LaTeX. Use the exact source and compiled PDF to inspect typography, maths, references and macro expansion. Multi-file LaTeX projects, bibliographies, graphics, private fonts and custom classes are not imported. Amount, timing and obligation tags are prompts for human review, not legal analysis.
 
 Margin does not provide simultaneous editing, authenticated reviewer identities, formal approval, signing, sending or filing. The JSON review record is not a tamper-proof legal audit trail. Read [SECURITY.md](SECURITY.md) before using it with sensitive documents.
+
+## What “better” would have to mean
+
+Margin aims to make a bounded review easier to understand and hand over. It does not claim to replace Word’s document fidelity, collaboration or editing coverage. Word already provides tracked changes, comments and legal blackline comparison. A local review package, an inspectable record for other tools and the LaTeX/PDF route are Margin’s current distinctions. Local processing alone is not unique to Margin.
+
+The design follows the emphasis on understanding, explanation, challenge and correction in [Rule & Reason, Book 1](https://ruleandreason.com/book-1/). The test is whether people miss fewer material changes, can explain their decisions, recover from mistakes and give the next reader a useful record. Speed and visual preference are secondary to correctness and comprehension.
+
+Before claiming superior usability, compare Word alone, Word with Margin, and the local web app using matched fictional agreements and both lawyers and occasional reviewers. Include changed amounts and footnotes, repeated clauses, external edits, undo, a handover and clean/redline exports. Measure material omissions, unaided completion, understanding, correction/checking effort and total time including installation. Current automated fixtures do not establish those human outcomes. One-click installation, wider document coverage and an independent usability pilot remain release work.
+
+### LaTeX and machine access
+
+LaTeX is a useful plain-text source and typesetting route, but its syntax is not itself legal meaning. DOCX also has an open, structured XML representation, including comments, footnotes and revision markup. Both formats need bounded parsing, source preservation and validation. Pandoc explicitly warns that format conversion can be lossy.
+
+The current web prototype uses LaTeX as its central representation. The Word pane deliberately reviews native revisions without converting them. A future format-neutral document model would need stable clause identities, definitions, references, footnotes, provenance and preserved unsupported native content, with readable text and narrow proposed edits exposed to tools. That model is a development direction, not a capability claimed by this release. LaTeX would remain a supported source and output format.
 
 ## Design and fonts
 

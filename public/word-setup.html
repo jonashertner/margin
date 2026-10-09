@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Margin for Word</title><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/word.css"></head>
+<body><main class="setup-page">
+<a class="setup-back" href="/">← Margin</a>
+<p class="eyebrow">ONE WORKSPACE, TWO WAYS IN</p>
+<h1>Stay close<br>to the words.</h1>
+<p class="setup-lead">Write in Word. Review beside it. Open a local snapshot in Margin when you want more room to think.</p>
+<section><h2>Inside Word</h2><p>Move through tracked changes, see who changed what, and accept or reject one change at a time. Your choices affect the document open in Word. Word’s Undo lets you reconsider.</p></section>
+<section><h2>In your browser</h2><p>Compare versions, leave comments, keep questions for the next reader, and export Word, LaTeX or a typeset PDF. A snapshot is a separate copy; edits do not sync back to Word.</p></section>
+<section><h2>Set up on your Mac</h2><p>In Margin’s project folder, install dependencies and prepare the local connection:</p><pre>npm ci
+npm run word:setup -- install-certificate
+npm run word:setup -- sideload
+npm run word:start</pre><p>The certificate step may ask for your Mac’s permission. If a trusted Office development certificate is already installed, you can skip it. Then, in Word, choose <strong>Home → Add-ins → Margin</strong>. Depending on your Word version, use the Add-ins menu or its arrow to find the sideloaded add-in. Once loaded, Margin appears on the Home ribbon.</p><p>After setup, <strong>Start Margin in Word.command</strong> starts both the pane and web app. Keep its window open while you work. Read the <a href="https://github.com/jonashertner/margin/blob/main/docs/word-add-in.md" target="_blank" rel="noopener noreferrer">setup guide</a> for requirements and other hosts.</p></section>
+<section><h2>A clear boundary</h2><p>Native review covers tracked changes in Word’s main text. Word remains the place to check headers, footnotes and other document areas. The browser conversion record shows what needs a closer look.</p><p>Document processing stays on your computer. The Word pane loads Microsoft’s Office runtime online. The standalone web app needs no cloud service. Word and PDF conversion currently require macOS.</p></section>
+<footer class="maker-credit">built with heart by <a href="https://jonashertner.com" target="_blank" rel="noopener noreferrer">jonashertner.com</a></footer>
+</main></body></html>

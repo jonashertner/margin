@@ -19,3 +19,7 @@ public/fonts/Timeless-Bold.ttf
 *.docx
 !test/fixtures/word/*.docx
 *.pdf
+
+*.margin-record.json
+*.key
+*.crt

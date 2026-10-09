@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xsi:type="TaskPaneApp">
+  <Id>47320ed7-0921-4fa2-987b-c2d78a7dbd91</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Margin</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Margin"/>
+  <Description DefaultValue="Read and review legal documents with Margin, running on your computer."/>
+  <IconUrl DefaultValue="https://localhost:4318/office/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:4318/office/icon-64.png"/>
+  <SupportUrl DefaultValue="https://github.com/jonashertner/margin"/>
+  <AppDomains>
+    <AppDomain>https://localhost:4318</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Document"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:4318/word"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Document">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title"/>
+            <Description resid="GetStarted.Description"/>
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="Margin.Group">
+                <Label resid="Margin.GroupLabel"/>
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16"/>
+                  <bt:Image size="32" resid="Icon.32"/>
+                  <bt:Image size="80" resid="Icon.80"/>
+                </Icon>
+                <Control xsi:type="Button" id="Margin.Open">
+                  <Label resid="Margin.OpenLabel"/>
+                  <Supertip>
+                    <Title resid="Margin.OpenLabel"/>
+                    <Description resid="Margin.OpenDescription"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16"/>
+                    <bt:Image size="32" resid="Icon.32"/>
+                    <bt:Image size="80" resid="Icon.80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>Margin.Review</TaskpaneId>
+                    <SourceLocation resid="Margin.Taskpane"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16" DefaultValue="https://localhost:4318/office/icon-16.png"/>
+        <bt:Image id="Icon.32" DefaultValue="https://localhost:4318/office/icon-32.png"/>
+        <bt:Image id="Icon.80" DefaultValue="https://localhost:4318/office/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://localhost:4318/word/setup"/>
+        <bt:Url id="Margin.Taskpane" DefaultValue="https://localhost:4318/word"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Margin is ready"/>
+        <bt:String id="Margin.GroupLabel" DefaultValue="Margin"/>
+        <bt:String id="Margin.OpenLabel" DefaultValue="Open Margin"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Open Margin from the Home ribbon to review this document. Keep the local Margin server running."/>
+        <bt:String id="Margin.OpenDescription" DefaultValue="Open the Margin review pane for this document."/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

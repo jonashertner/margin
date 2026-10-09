@@ -1,0 +1,229 @@
+{
+  "fixturePurpose": "Fictional QA material only; no actual client or legal advice.",
+  "revisionAuthor": "Mara Keller",
+  "revisionDate": "2026-10-09T08:30:00Z",
+  "files": {
+    "01-baseline.docx": {
+      "trackedRevisions": 0,
+      "clauseParagraphs": [
+        "The settlement covers the prototype delivery identified in Schedule A. Neither party admits liability.",
+        "Linden Works Ltd shall pay CHF 48,000 within 20 days after both parties sign this agreement.",
+        "Any overdue amount bears simple interest at 4% per year from the day following the payment deadline.",
+        "The parties shall keep the settlement terms, including the existence of this agreement, confidential except where disclosure is required by law.",
+        "Each party may terminate this agreement on ten days of written notice before payment is made.",
+        "The parties choose Swiss law and the courts of Basel for any dispute arising from this agreement."
+      ],
+      "renderedNumbering": [
+        "1.",
+        "2.",
+        "3.",
+        "4.",
+        "5.",
+        "6."
+      ],
+      "sha256": "86ee10a0fac67859de49cc869cbb41a19e167e508202d1e6dd7ce9c83273683d"
+    },
+    "02-clean-proposed.docx": {
+      "trackedRevisions": 0,
+      "clauseParagraphs": [
+        "The settlement covers the prototype delivery identified in Schedule A. Neither party admits liability.",
+        "Linden Works Ltd shall pay CHF 52,000 within 30 days after both parties sign this agreement.",
+        "Any overdue amount bears simple interest at 4% per year from the day following the payment deadline.",
+        "The parties shall keep the settlement terms confidential except where disclosure is required by law.",
+        "Neither party shall publish an announcement naming the other party without that party’s prior written consent.",
+        "The parties choose Swiss law and the courts of Basel for any dispute arising from this agreement."
+      ],
+      "renderedNumbering": [
+        "1.",
+        "2.",
+        "3.",
+        "4.",
+        "5.",
+        "6."
+      ],
+      "sha256": "dbeba28390d641c1510669c49f3ebc6e42338ff9e5a6adbba9ad64391789c2de"
+    },
+    "03-native-tracked.docx": {
+      "trackedElementCount": 9,
+      "beforeClauseParagraphs": [
+        "The settlement covers the prototype delivery identified in Schedule A. Neither party admits liability.",
+        "Linden Works Ltd shall pay CHF 48,000 within 20 days after both parties sign this agreement.",
+        "Any overdue amount bears simple interest at 4% per year from the day following the payment deadline.",
+        "The parties shall keep the settlement terms, including the existence of this agreement, confidential except where disclosure is required by law.",
+        "Each party may terminate this agreement on ten days of written notice before payment is made.",
+        "The parties choose Swiss law and the courts of Basel for any dispute arising from this agreement."
+      ],
+      "afterClauseParagraphs": [
+        "The settlement covers the prototype delivery identified in Schedule A. Neither party admits liability.",
+        "Linden Works Ltd shall pay CHF 52,000 within 30 days after both parties sign this agreement.",
+        "Any overdue amount bears simple interest at 4% per year from the day following the payment deadline.",
+        "The parties shall keep the settlement terms confidential except where disclosure is required by law.",
+        "Neither party shall publish an announcement naming the other party without that party’s prior written consent.",
+        "The parties choose Swiss law and the courts of Basel for any dispute arising from this agreement."
+      ],
+      "beforeNumberedParagraphCount": 6,
+      "afterNumberedParagraphCount": 6,
+      "changes": [
+        {
+          "logicalChange": "amount",
+          "ids": [
+            "100",
+            "101"
+          ],
+          "before": "48,000",
+          "after": "52,000"
+        },
+        {
+          "logicalChange": "deadline",
+          "ids": [
+            "102",
+            "103"
+          ],
+          "before": "20",
+          "after": "30"
+        },
+        {
+          "logicalChange": "confidentiality",
+          "ids": [
+            "104"
+          ],
+          "before": ", including the existence of this agreement,",
+          "after": ""
+        },
+        {
+          "logicalChange": "termination paragraph",
+          "ids": [
+            "105",
+            "106"
+          ],
+          "before": "Each party may terminate this agreement on ten days of written notice before payment is made.",
+          "after": "",
+          "requiresParagraphDecision": true
+        },
+        {
+          "logicalChange": "announcement paragraph",
+          "ids": [
+            "107",
+            "108"
+          ],
+          "before": "",
+          "after": "Neither party shall publish an announcement naming the other party without that party’s prior written consent.",
+          "requiresParagraphDecision": true
+        }
+      ],
+      "mixedDecisionExample": {
+        "accept": [
+          "amount",
+          "termination paragraph"
+        ],
+        "reject": [
+          "deadline",
+          "confidentiality",
+          "announcement paragraph"
+        ],
+        "expectedClauseParagraphs": [
+          "The settlement covers the prototype delivery identified in Schedule A. Neither party admits liability.",
+          "Linden Works Ltd shall pay CHF 52,000 within 20 days after both parties sign this agreement.",
+          "Any overdue amount bears simple interest at 4% per year from the day following the payment deadline.",
+          "The parties shall keep the settlement terms, including the existence of this agreement, confidential except where disclosure is required by law.",
+          "The parties choose Swiss law and the courts of Basel for any dispute arising from this agreement."
+        ],
+        "expectedNativeNumbering": [
+          "1.",
+          "2.",
+          "3.",
+          "4.",
+          "5."
+        ],
+        "expectedRemainingRevisions": 0
+      },
+      "sha256": "8d8c4fa713147024540f38e78e22892a5ae63e4a85a61f8aeeac3e8b44abcbf3"
+    },
+    "04-paragraph-boundaries.docx": {
+      "changes": [
+        {
+          "id": "200",
+          "kind": "inserted paragraph mark",
+          "effectOnAccept": "split first notice paragraph",
+          "effectOnReject": "join first and second notice paragraphs"
+        },
+        {
+          "id": "201",
+          "kind": "deleted paragraph mark",
+          "effectOnAccept": "join delivery and receipt paragraphs",
+          "effectOnReject": "retain two paragraphs"
+        }
+      ],
+      "beforeParagraphs": [
+        "Notices must be sent by email. A copy must be sent to the designated contact.",
+        "Delivery is effective at 09:00. ",
+        "The receipt must be retained."
+      ],
+      "afterParagraphs": [
+        "Notices must be sent by email. ",
+        "A copy must be sent to the designated contact.",
+        "Delivery is effective at 09:00. The receipt must be retained."
+      ],
+      "mustNot": [
+        "drop text",
+        "insert blank numbered paragraphs",
+        "treat paragraph mark as empty no-op"
+      ],
+      "sha256": "693679ed9aad000a77e76b0140ab3566191170e558e6176f362e8424edf1ac77"
+    },
+    "05-special-constructs.docx": {
+      "mustPreserveOrExplicitlyWarn": [
+        "header text",
+        "structured document tag and its text",
+        "REF field and displayed result",
+        "table layout and text",
+        "tracked table row insertion",
+        "text box content"
+      ],
+      "sentinelText": [
+        "Confidential negotiation copy for the fictional parties",
+        "Delivery is at the north loading bay.",
+        "clause 2",
+        "15 October 2026",
+        "Special term in a text box: delivery requires an appointment."
+      ],
+      "sha256": "b7d398ecb189c4a6f63ce8cdcbeb675e79e5b667e85412d293f86e0b9e93ad60"
+    }
+  },
+  "sharedComments": [
+    {
+      "id": "0",
+      "author": "Elias Brunner",
+      "date": "2026-10-09T08:10:00Z",
+      "anchor": "prototype delivery",
+      "paragraphKey": "scope",
+      "text": "Please confirm that Schedule A identifies the same delivery as the opening paragraph."
+    },
+    {
+      "id": "1",
+      "author": "Mara Keller",
+      "date": "2026-10-09T08:30:00Z",
+      "anchorBefore": "48,000",
+      "anchorAfter": "52,000",
+      "paragraphKey": "payment",
+      "text": "The revised sum includes the agreed testing costs. Please confirm the payment authority."
+    }
+  ],
+  "sharedFootnotes": [
+    {
+      "id": "1",
+      "anchorParagraph": "interest",
+      "text": "The interest rate is a fictional commercial term used solely for this example."
+    }
+  ],
+  "allFixturesRequiredChecks": [
+    "original file bytes unchanged",
+    "no remote requests needed",
+    "no silent loss of unsupported constructs",
+    "round-trip decisions preserve exact amounts and periods",
+    "comments retain text author date and logical anchor",
+    "native redline export contains actual w:ins/w:del, not colour formatting alone",
+    "clean export contains no revision elements and equals the decisions material",
+    "Word native numbering uses w:numPr rather than pasted numerals"
+  ]
+}

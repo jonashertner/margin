@@ -1,0 +1,21 @@
+node_modules/
+.venv/
+.margin-data/
+.folio-data/
+test/output/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+!.env.example
+# Optional local fonts are not distributed.
+public/fonts/Timeless.ttf
+public/fonts/Timeless-Bold.ttf
+
+# Review exports and documents stay private. Fictional fixtures are the exception.
+*.margin.json
+*.folio.json
+*.docx
+!test/fixtures/word/*.docx
+*.pdf

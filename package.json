@@ -1,0 +1,20 @@
+{
+  "name": "margin-legal-review",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/review.test.mjs test/authoring.test.mjs test/word-reading.test.mjs test/runtime.test.mjs test/api.test.mjs",
+    "check": "node --check server.mjs && node --check public/app.js",
+    "test:word": "node --test test/word.test.mjs"
+  },
+  "dependencies": {
+    "diff": "8.0.4"
+  },
+  "description": "A local document review workspace for legal drafting",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  }
+}
